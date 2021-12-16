@@ -9,6 +9,12 @@ else
 	exit 1
 fi
 
+echo "Before cleaning"
+
+df -h
+
+echo "-------------------------------"
+
 # clean journalctl logs
 echo $1 | sudo -S journalctl --vacuum-size=50M 2>/dev/null
 
@@ -60,4 +66,8 @@ else
 	echo "Unnecessary packages has been deleted FAILED"
 fi
 
+echo "-------------------------------"
 
+echo "After cleaning"
+
+df -h
